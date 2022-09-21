@@ -1,0 +1,67 @@
+id: listagem1
+type: Context
+
+style:
+  display: flex
+  justify-content: center
+
+layout:
+  contentGutter: 16
+
+
+blocks:
+  - id: todo_input
+    type: TextInput
+    layout:
+      grow: 1
+    properties:
+      label:
+        disabled: true
+      placeholder: Digite um item
+  - id: add_item
+    type: Button
+    layout:
+      shrink: 1
+    properties:
+      title: Adicionar
+      icon: PlusOutlined
+    events:
+      onClick:
+        - id: add
+          type: SetState
+          params:
+            todos:
+              _array.concat:
+                - - _state: todo_input
+                - _state: todos
+            todo_input: null
+  - id: todos
+    type: List
+    layout:
+      contentGutter: 16
+    blocks:
+      - id: todos.$
+        type: TitleInput
+        layout:
+          grow: 1
+        properties:
+          level: 4
+      - id: remove_item
+        type: Icon
+        layout:
+          shrink: 1
+        properties:
+          name: MinusCircleOutlined
+          size: 18
+        events:
+          onClick:
+            - id: remove
+              type: CallMethod
+              messages:
+                loading: Carregando
+                success: Item deletado com sucesso
+              params:
+                blockId: todos
+                method: removeItem
+                args:
+                  - _index: 0

@@ -1,0 +1,60 @@
+id: login2
+type: Context
+properties:
+  title: Teste
+layout:
+  contentJustify: center
+style:
+  backgrondColor: black
+  top: 40vh
+areas:
+  content:
+    blocks:
+      - id: login
+        type: Box
+        layout: 
+          size: 400
+        style: 
+        properties:
+        blocks:
+          - id: Title
+            type: Title
+            properties:
+              content: Login
+              level: 4
+          - id: email
+            type: TextInput
+            layout: 
+              span: 
+            required: true
+            validate:
+              - message: 
+                status: error
+                pass:
+                #regex that only allows numbers and letters
+                  _regex: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ 0-9]+$' 
+            properties: 
+              title: E-mail
+              placeholder: 
+              disabled: false
+          - id: senha
+            type: PasswordInput
+            layout: 
+              span: 
+            required: true
+            properties:
+              title: Senha
+          - id: Entrar
+            style:
+              top: 2vh
+            type: Button
+            layout:
+              span: 12
+              grow: 1
+            properties:
+              title: Entrar
+              block: true
+              type: primary
+              icon: ArrowRightOutlined
+
+

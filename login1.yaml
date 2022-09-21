@@ -1,0 +1,117 @@
+id: login1
+type: Context
+
+style:
+  top: 35vh
+
+properties:
+  title: Login
+
+layout:
+  contentJustify: center
+  align: middle
+  
+blocks:
+  - id: content
+    type: Card
+    layout:
+      size: 800
+      contentGutter: 8
+    blocks:
+      - id: title
+        type: Title
+        properties:
+          content: Login
+          level: 3
+      - id: Login
+        type: Card
+        layout:
+          contentGutter: 5
+          contentJustify: space-between
+        blocks:
+          - id: email
+            type: TextInput
+            validate:
+              - message: Coloque um E-mail.
+                status: error
+                pass:
+                  _not:
+                    _not:
+                      _state: email
+              - message: Coloque um email valido.
+                status: error
+                pass:
+                  _regex: '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+            layout:
+              span: 10
+            properties:
+              title: E-mail
+              placeholder: Digite o E-mail do colaborador
+          - id: password
+            type: PasswordInput
+            layout:
+              span: 10
+            properties:
+              title: Senha
+              placeholder: 'Ex: 12345678'
+      - id: Voltar
+        type: Button
+        layout:
+          span: 12
+          grow: 1
+        properties:
+          title: Voltar
+          block: true
+          type: default
+          icon: ArrowLeftOutlined
+      - id: Entrar
+        type: Button
+        layout:
+          span: 12
+          grow: 1
+        properties:
+          title: Entrar
+          block: true
+          type: primary
+          icon: ArrowRightOutlined
+        events:
+          onClick:
+            try:
+              - id: validate_filds
+                type: Validate
+                messages:
+                  error: Ah campos com erro.
+              - id: update
+                type: Request
+                params:
+                  - update_data
+              - id: update_password
+                type: Request
+                skip:
+                  _log:
+                    _eq:
+                      - _state: password
+                      - null
+                params:
+                  - update_password
+              - id: link_to_list
+                type: Link
+                params:
+                  pageId: colaboradores
+              - id: success
+                type: Message
+                messages:
+                params:
+                  content: Os dados foram salvos
+                  status: success
+                  duration: 10
+            catch:
+              - id: erro
+                type: Message
+                messages:
+                params:
+                  content: Ocorreu um erro ao salvar os dados
+                  status: error
+                  duration: 10
+
+

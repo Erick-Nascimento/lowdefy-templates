@@ -1,0 +1,77 @@
+
+lowdefy: 3.23.3
+name: Lowdefy starter
+
+menus:
+  - id: default
+    links:
+      - id: page1
+        type: MenuLink
+        pageId: home
+        properties:
+          title: Home
+          icon: HomeOutlined
+      - id: login-group
+        type: MenuGroup
+        properties:
+          title: Login
+          icon: LoginOutlined
+        links:
+          - id: login1-item
+            type: MenuLink
+            pageId: login1
+            properties:
+              title: Login 1
+              icon: CaretRightOutlined
+          - id: login2-item
+            type: MenuLink
+            pageId: login2
+            properties:
+              title: Login 2
+              icon: CaretRightOutlined
+      - id: cadastro-group
+        type: MenuGroup
+        properties:
+          title: Cadastro
+          icon: EditOutlined
+        links:
+          - id: cadastro1-item
+            type: MenuLink
+            pageId: cadastro1
+            properties:
+              title: Cadastro 1
+              icon: CaretRightOutlined
+          - id: cadastro2-item
+            type: MenuLink
+            pageId: cadastro2
+            properties:
+              title: Cadastro 2
+              icon: CaretRightOutlined
+      - id: listagem-group
+        type: MenuGroup
+        properties:
+          title: Listagem
+          icon: EditOutlined
+        links:
+          - id: listagem1-item
+            type: MenuLink
+            pageId: listagem1
+            properties:
+              title: Listagem 1
+              icon: CaretRightOutlined
+          - id: listagem2-item
+            type: MenuLink
+            pageId: listagem2
+            properties:
+              title: Listagem 2
+              icon: CaretRightOutlined
+
+pages:
+  - _ref: home.yaml
+  - _ref: login1.yaml
+  - _ref: login2.yaml
+  - _ref: cadastro1.yaml
+  - _ref: cadastro2.yaml
+  - _ref: listagem1.yaml
+  - _ref: listagem2.yaml
+

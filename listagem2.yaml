@@ -1,0 +1,69 @@
+id: listagem2
+type: Context
+
+blocks:
+
+  - id: contacts
+    type: ControlledList
+    blocks:
+      - id: contacts.$.first_name
+        type: TextInput
+        layout:
+          span: 12
+        required: true
+        properties:
+          title: First Name
+          label:
+            span: 10
+            align: right
+      - id: contacts.$.last_name
+        type: TextInput
+        layout:
+          span: 12
+        required: true
+        properties:
+          title: Last Name
+          label:
+            span: 10
+            align: right
+      - id: contacts.$.date_of_birth
+        type: DateSelector
+        layout:
+          span: 12
+        required: true
+        properties:
+          title: Date of Birth
+          label:
+            span: 10
+            align: right
+      - id: contacts.$.email
+        type: TextInput
+        layout:
+          span: 12
+        required: true
+        properties:
+          title: Email address
+          label:
+            span: 10
+            align: right
+      - id: contacts.$.phone_number
+        type: TextInput
+        layout:
+          span: 12
+        properties:
+          title: Phone number
+          label:
+            span: 10
+            align: right
+      - id: contacts.$.preference
+        type: ButtonSelector
+        layout:
+          span: 12
+        properties:
+          title: Preference
+          label:
+            span: 10
+            align: right
+          options:
+            - Phone
+            - Email
